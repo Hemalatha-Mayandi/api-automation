@@ -1,0 +1,4 @@
+org\example\utils\HttpClientAllureWrapper.class
+org\example\utils\PropertyUtils.class
+org\example\Main.class
+org\example\utils\api\SwaggerUtils.class

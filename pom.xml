@@ -16,6 +16,10 @@
         <junit-jupiter.version>5.11.4</junit-jupiter.version>
         <project.lombok.version>1.18.36</project.lombok.version>
         <rest-assured.version>5.5.0</rest-assured.version>
+        <allure.version>2.13.9</allure.version>
+        <allure.cmd.download.url>
+            https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline
+        </allure.cmd.download.url>
     </properties>
 
     <dependencies>
@@ -55,17 +59,6 @@
             <artifactId>opencsv</artifactId>
             <version>5.10</version>
         </dependency>
-
-<!--        <dependency>-->
-<!--            <groupId>com.fasterxml.jackson.core</groupId>-->
-<!--            <artifactId>jackson-databind</artifactId>-->
-<!--            <version>2.14.0</version>-->
-<!--        </dependency>-->
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-        </dependency>
-
     </dependencies>
 
     <build>
@@ -74,13 +67,29 @@
             <plugin>
 
                 <artifactId>maven-surefire-plugin</artifactId>
-                <!--                <systemProperties>-->
-                <!--                    <property>-->
-                <!--                        <name>junit.jupiter.extensions.autodetection.enabled</name>-->
-                <!--                        <value>true</value>-->
-                <!--                    </property>-->
-                <!--                </systemProperties>-->
+                <version>3.5.0</version>
+                <configuration>
+                    <systemProperties>
+                        <property>
+                            <name>junit.jupiter.extensions.autodetection.enabled</name>
+                            <value>true</value>
+                        </property>
+                    </systemProperties>
+                </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>2.10.0</version>
+                <configuration>
+                    <reportVersion>${allure.version}</reportVersion>
+                    <allureDownloadUrl>
+                        ${allure.cmd.download.url}/${allure.version}/allure-commandline-${allure.version}.zip
+                    </allureDownloadUrl>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
 </project>

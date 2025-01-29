@@ -1,3 +1,4 @@
+import io.restassured.path.json.JsonPath;
 import org.example.steps.CarTextStepDefs;
 import org.junit.jupiter.api.Test;
 
@@ -18,5 +19,7 @@ public class carTextTests {
         String strings = carTextStepDefs.extractCarOutput(carRegNo);
 
         System.out.println("Car Reg Test  " + strings);
+        JsonPath js = new JsonPath(strings);
+        js.getString("");
     }
 }
